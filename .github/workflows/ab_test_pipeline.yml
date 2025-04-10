@@ -1,6 +1,6 @@
 name: AB Test Train and Evaluate Titanic Models
 
-on: [push]
+on: push
 
 jobs:
   evaluate-models:
