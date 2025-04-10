@@ -16,22 +16,22 @@ jobs:
 
       - name: Install dependencies
         run: pip install pandas scikit-learn joblib
-      - name: 🏋️‍♂️ Train Model V1
+      - name: 🏋️‍♂️ Train Model V1 LogisticRegression
         run: |
-          echo "Training Model V1..."
+          echo "Training Model V1 (LogisticRegression) ..."
           python titanic_ab_testing/model_v1/train.py
 
-      - name: 🧪 Evaluate Model V1
+      - name: 🧪 Evaluate Model V1 LogisticRegression
         run: |
-          echo "Evaluating Model V1..."
+          echo "Evaluating Model V1  LogisticRegression..."
           python titanic_ab_testing/model_v1/evaluate.py
 
-      - name: 🏋️‍♂️ Train Model V2
+      - name: 🏋️‍♂️ Train Model V2 RandomForestClassifier
         run: |
-          echo "Training Model V2..."
+          echo "Training Model V2  RandomForestClassifier..."
           python titanic_ab_testing/model_v2/train.py
 
-      - name: 🧪 Evaluate Model V2
+      - name: 🧪 Evaluate Model V2 RandomForestClassifier
         run: |
-          echo "Evaluating Model V2..."
+          echo "Evaluating Model V2  RandomForestClassifier..."
           python titanic_ab_testing/model_v2/evaluate.py
