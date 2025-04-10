@@ -1,0 +1,24 @@
+name: AB Test ML Models
+
+on: [push]
+
+jobs:
+  evaluate-models:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install pandas scikit-learn joblib
+
+      - name: Evaluate Model V1
+        run: python titanic_ab_test/model_v1/train.py && python titanic_ab_test/model_v1/evaluate.py
+
+      - name: Evaluate Model V2
+        run: python titanic_ab_test/model_v2/train.py && python titanic_ab_test/model_v2/evaluate.py
