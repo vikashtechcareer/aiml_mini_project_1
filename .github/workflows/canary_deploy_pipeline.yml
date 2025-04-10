@@ -10,11 +10,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Build and Push Docker Images
-        run: |
-          docker build -t iris_model_v1 ./iris_canary_deploy/model_v1
-          docker build -t iris_model_v2 ./iris_canary_deploy/model_v2
-          docker build -t iris_model_v3 ./iris_canary_deploy/model_v3
-          echo "Images built. Push to ECR or DockerHub next step..."
+      - name: Start containers
+        run: docker-compose -f "iris_canary_deploy/docker-compose.yml" up -d --build
+
+      - name: Install node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm run test
+
+      - name: Stop containers
+        if: always()
+        run: docker-compose -f "iris_canary_deploy/docker-compose.yml" down
 
 
