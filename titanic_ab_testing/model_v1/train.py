@@ -7,7 +7,7 @@ from sklearn.linear_model import LogisticRegression
 import joblib
 
 print( os.getcwd() )
-df = pd.read_csv('./data/Titanic.csv')
+df = pd.read_csv('titanic_ab_testing/data/Titanic.csv')
 df = df[['Pclass', 'Sex', 'Age', 'Survived']].dropna()
 df['Sex'] = df['Sex'].map({'male': 0, 'female': 1})
 
