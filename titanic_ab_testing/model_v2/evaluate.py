@@ -1,10 +1,9 @@
-import os
+
 
 import pandas as pd
 import joblib
 from sklearn.metrics import accuracy_score
 
-print( os.getcwd() )
 df = pd.read_csv('titanic_ab_testing/data/Titanic.csv')
 df = df[['Pclass', 'Sex', 'Age', 'Survived']].dropna()
 df['Sex'] = df['Sex'].map({'male': 0, 'female': 1})
