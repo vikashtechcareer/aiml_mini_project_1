@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  model_v1:
+    build: ./model_v1
+    container_name: titanic_model_v1
+    ports:
+      - "5001:5000"
+
+  model_v2:
+    build: ./model_v2
+    container_name: titanic_model_v2
+    ports:
+      - "5002:5000"
+
+
+  model_v3:
+    build: ./model_v3
+    container_name: titanic_model_v3
+    ports:
+      - "5002:5000"

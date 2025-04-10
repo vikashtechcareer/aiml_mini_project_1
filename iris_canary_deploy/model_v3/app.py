@@ -1,15 +1,17 @@
 from flask import Flask, request, jsonify
 from sklearn.datasets import load_iris
-from sklearn.svm import SVC
+from sklearn.ensemble import GradientBoostingClassifier
 import joblib
 
 app = Flask(__name__)
 
-# Load dataset
+# Load the dataset
 iris = load_iris()
-# Train an SVM model
-model = SVC(probability=True)
+
+# Train a Gradient Boosting model
+model = GradientBoostingClassifier()
 model.fit(iris.data, iris.target)
+
 # Save the model
 joblib.dump(model, 'model.pkl')
 
