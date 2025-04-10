@@ -1,12 +1,6 @@
 name: AB Test Train and Evaluate Titanic Models
 
-on:
-  push:
-    paths:
-      - 'titanic_ab_test/**'
-  pull_request:
-    paths:
-      - 'titanic_ab_test/**'
+on: [push]
 
 jobs:
   evaluate-models:
