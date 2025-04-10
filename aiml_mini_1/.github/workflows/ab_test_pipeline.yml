@@ -1,6 +1,12 @@
-name: AB Test ML Models
+name: AB Test Train and Evaluate Titanic Models
 
-on: [push]
+on:
+  push:
+    paths:
+      - 'titanic_ab_test/**'
+  pull_request:
+    paths:
+      - 'titanic_ab_test/**'
 
 jobs:
   evaluate-models:
@@ -16,9 +22,22 @@ jobs:
 
       - name: Install dependencies
         run: pip install pandas scikit-learn joblib
+      - name: 🏋️‍♂️ Train Model V1
+        run: |
+          echo "Training Model V1..."
+          python titanic_ab_testing/model_v1/train.py
 
-      - name: Evaluate Model V1
-        run: python titanic_ab_test/model_v1/train.py && python titanic_ab_test/model_v1/evaluate.py
+      - name: 🧪 Evaluate Model V1
+        run: |
+          echo "Evaluating Model V1..."
+          python titanic_ab_testing/model_v1/evaluate.py
 
-      - name: Evaluate Model V2
-        run: python titanic_ab_test/model_v2/train.py && python titanic_ab_test/model_v2/evaluate.py
+      - name: 🏋️‍♂️ Train Model V2
+        run: |
+          echo "Training Model V2..."
+          python titanic_ab_testing/model_v2/train.py
+
+      - name: 🧪 Evaluate Model V2
+        run: |
+          echo "Evaluating Model V2..."
+          python titanic_ab_testing/model_v2/evaluate.py
