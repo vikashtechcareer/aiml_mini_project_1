@@ -18,4 +18,4 @@ services:
     build: ./model_v3
     container_name: iris_model_v3
     ports:
-      - "5002:5000"
+      - "5003:5000"
