@@ -19,3 +19,15 @@ services:
     container_name: iris_model_v3
     ports:
       - "5003:5000"
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx_canary
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - model_v1
+      - model_v2
+      - model_v3

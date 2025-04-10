@@ -10,7 +10,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Build and Push Docker Images
+      - name: Build and Push Dockerfile Images
         run: |
           docker build -t iris_model_v1 ./iris_canary_deploy/model_v1
           docker build -t iris_model_v2 ./iris_canary_deploy/model_v2
